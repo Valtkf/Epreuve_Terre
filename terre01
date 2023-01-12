@@ -1,0 +1,7 @@
+const { argv } = require("process");
+
+const str = '/home/ubuntu/Documents/terre01.js';
+
+const words=str.split(' ');
+
+console.log(words[3]);
