@@ -1,7 +1,3 @@
-const { argv } = require("process");
+const {argv}=require("process");
 
-const str = '/home /ubuntu /Documents /terre01.js';
-
-const words=str.split(' ');
-
-console.log(words[3]);
+console.log(__filename.slice(__dirname.length + 1));
