@@ -1,21 +1,11 @@
-const division = () => {
-    const number = process.argv;
-    number.splice (0,2);
-
-    
-    if(
-        number.length>2 ||
-        number.length<2 ||
-        number[1] == 0 ||
-        number[1] >= number[0] ||
-        isNaN(number[0]) ||
-        isNaN(number[1])
-    ){
-        return "error";
-    }
-
-    return `résultat: ${Math.floor(number[0] / number[1])}
-    reste: ${number[0] % number[1]}`;
-};
-
-console.log(division());
+function divide(a, b) {
+    let result = Math.floor(a / b);
+    let remainder = a % b;
+    if (a < b) {
+        console.log ("erreur");
+      } if (a > b || a == b) {
+    console.log(`${a} divisé par ${b} est égal à ${result} avec un reste de ${remainder}.`);
+      }
+  }
+  
+  divide(10, 2);
