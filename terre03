@@ -1,36 +1,23 @@
-const myAlphabet = () => { 
-    
-    const AZ = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-
-let goodLetter = false;
-const letter = process.argv;
-letter.splice(0,2);
+//L'aphabet à partir de ...
+//créer un programme qui affiche l'alphabet à partir de la lettre donnée en argument en lettres minuscules suivi d'un retour  à la ligne
 
 
-if (
-    letter.length === 0 ||
-    letter.length > 1 ||
-    letter[0].length > 1 ||
-    !isNaN(letter[0])
-)
-{
-    return "Ceci n'est pas une lettre. Essayez à nouveau.";
+//on doit aller chercher la lettre de départ dans l'argument
+//on utiliser cette lettre pour lancer la fonction
+//on dois lancer cette fonction qui écrit l'alphabet à partir de cette lettre
+
+const AZ = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+
+function afficherAPartirDe(lettre) {
+    let indexLettre = AZ.indexOf(lettre.toLowerCase());
+    if (indexLettre === -1) {
+        return "La lettre spécifiée n'est pas dans l'alphabet.";
+    }
+    let alphabetAPartiDe = "";
+    for (let i = indexLettre; i < AZ.length; i++) {
+        alphabetAPartiDe += AZ[i] + " ";
+    }
+    return alphabetAPartiDe;
 }
 
-let text = "";
-
-AZ.forEach((element) => {
-    if (element == letter [0].toLowerCase()){
-        goodLetter = true;
-    }
-
-    if (goodLetter) {
-        text = text + element;
-    }
-
-});
-
-return text ;
-};
-
-console.log(myAlphabet());
+console.log(afficherAPartirDe("e"));
