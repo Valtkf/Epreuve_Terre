@@ -6,18 +6,17 @@
 //on utiliser cette lettre pour lancer la fonction
 //on dois lancer cette fonction qui écrit l'alphabet à partir de cette lettre
 
-const AZ = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
-function afficherAPartirDe(lettre) {
-    let indexLettre = AZ.indexOf(lettre.toLowerCase());
-    if (indexLettre === -1) {
-        return "La lettre spécifiée n'est pas dans l'alphabet.";
+let lettre = process.argv[2];
+
+if (lettre === undefined) {
+    console.log("Veuillez rentrer une lettre.");
+} else if (lettre.length !== 1 || !alphabet.includes(lettre.toLowerCase())) {
+    console.log("Veuillez spécifier une seule lettre de l'alphabet.");
+} else {
+    let indexlettre = alphabet.indexOf(lettre.toLowerCase());
+    for(let i = indexlettre; i < alphabet.length; i++) {
+        console.log(alphabet[i]);
     }
-    let alphabetAPartiDe = "";
-    for (let i = indexLettre; i < AZ.length; i++) {
-        alphabetAPartiDe += AZ[i] + " ";
-    }
-    return alphabetAPartiDe;
 }
-
-console.log(afficherAPartirDe("e"));
