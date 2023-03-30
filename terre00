@@ -1,7 +1,14 @@
-let myAlphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+const alphabet = [];
 
+for (let i = 0; i < Infinity; i++) {
+    let letter = String.fromCharCode(i + 97);
+    alphabet[i] = letter;
 
-for (let i = 0; i<myAlphabet.length; i++)
-{
-    console.log(myAlphabet[i]);
+    if(letter == 'z') {
+        break;
+    }
+}
+
+for (let i = 0; i < alphabet.length; i++) {
+    console.log(alphabet[i]);
 }
