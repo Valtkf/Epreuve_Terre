@@ -6,6 +6,10 @@
 
 const chaine = process.argv[2];
 
+if (!chaine) {
+  console.log("erreur");
+}
+
 let count = 0;
 
 for (let i = 0; chaine[i] != null; i++) {
