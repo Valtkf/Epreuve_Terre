@@ -6,3 +6,11 @@
 
 const chaine = process.argv[2];
 
+let count = 0;
+
+for (let i = 0; chaine[i] != null; i++) {
+  count++;
+}
+
+
+console.log("La chaîne " + chaine + " contient " + count + " caractères. ");
