@@ -6,15 +6,14 @@
 
 const chaine = process.argv[2];
 
-if (!chaine) {
-  console.log("erreur");
-}
-
 let count = 0;
 
-for (let i = 0; chaine[i] != null; i++) {
-  count++;
+
+if (process.argv.length > 3 || !isNaN(chaine)) {
+    console.log("erreur");
+    return
 }
-
-
-console.log("La chaîne " + chaine + " contient " + count + " caractères. ");
+for (let i = 0; chaine[i] != null; i++) {
+    count++;
+}
+console.log("la chaine " + chaine + " contient " + count + " caractères. ");
