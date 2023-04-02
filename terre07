@@ -1,5 +1,5 @@
 //Créez un programme qui affiche le nombre de caractères d'une chîane de cractères passée en argument
-// Exemple : "Hello World" = 12
+// Exemple : "Hello World!" = 12
 // Envoyer un mesage d'erreur pour : node terre07.js = erreur 
 // Envoyer un mesage d'erreur pour : node terre07.js "Bonjour" "Aurevoir" = erreur
 // Envoyer un mesage d'erreur pour : node terre07.js 10 = erreur
