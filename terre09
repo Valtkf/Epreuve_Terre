@@ -2,7 +2,9 @@ Créez  un programme qui affiche la racine carrée d'un entier positif.
 Attention : il faudra gérer les potentielles erreurs d'arguments
 
 const entier = process.argv[2];
-const racine = process.argv[3];
-let resultat = Math.sqrt(entier , racine);
 
-console.log("la racine carrée de " + entier + "est " + resultat);
+let resultat = Math.sqrt(entier);
+
+console.log("la racine carrée de " + entier + " est " + resultat);
+
+
