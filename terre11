@@ -1,2 +1,2 @@
-Créez un programme qui affiche si un nombre est premier ou pas
-Attention : 0 et  1 ne sont pas des nombres premiers
+Créez un programme qui transforme une heure affichée en format 24h en une heure affichée en format 12h.
+Attention : midi et minuit
