@@ -1,3 +1,25 @@
 Créez un programme qui transforme une heure affichée en format 24h en une heure affichée en format 12h.
 Attention : midi et minuit
 il faudra aussi gérer les erreurs d'arguments
+
+function convertTo12HourFormat(time) {
+  const timeArray = time.split(':'); // Sépare l'heure et les minutes dans un tableau
+  let hours = parseInt(timeArray[0], 10); // Récupère l'heure sous forme de nombre entier
+  const minutes = timeArray[1]; // Récupère les minutes
+
+  let ampm = 'AM'; // Initialise AM par défaut
+  if (hours >= 12) { // Si l'heure est 12 ou plus tard
+    ampm = 'PM'; // Change AM en PM
+  }
+  if (hours > 12) { // Si l'heure est après midi
+    hours = hours - 12; // Soustrait 12 pour convertir en format 12h
+  }
+  if (hours === 0) { // Si l'heure est minuit
+    hours = 12; // Change 0 en 12
+  }
+
+  return hours + ':' + minutes + ' ' + ampm; // Retourne l'heure au format 12h
+}
+
+console.log(convertTo12HourFormat('15:30')); // Affiche "3:30 PM"
+console.log(convertTo12HourFormat('09:45')); // Affiche "9:45 AM"
