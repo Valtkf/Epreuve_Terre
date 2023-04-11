@@ -21,5 +21,5 @@ function convertTo12HourFormat(time) {
   return hours + ':' + minutes + ' ' + ampm; // Retourne l'heure au format 12h
 }
 
-console.log(convertTo12HourFormat('15:30')); // Affiche "3:30 PM"
-console.log(convertTo12HourFormat('09:45')); // Affiche "9:45 AM"
+console.log(convertTo12HourFormat(process.argv[2]));
+
