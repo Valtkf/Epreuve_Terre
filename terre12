@@ -10,4 +10,7 @@ function convertTo24HourFormat (time) {
     if (isNaN(hours) || isNaN(minutes)) {
     return console.log("Veuillez rentrer une heure valide. ")
   }
+  
 }
+
+console.log(convertTo12HourFormat(process.argv[2]));
