@@ -7,5 +7,7 @@ function convertTo24HourFormat (time) {
     let hours = parseInt(timeArray [0] , [10]);
     const minutes  = timeArray[1];
     
-    
+    if (isNaN(hours) || isNaN(minutes)) {
+    return console.log("Veuillez rentrer une heure valide. ")
+  }
 }
