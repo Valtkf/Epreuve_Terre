@@ -16,16 +16,15 @@ function convertTo24HourFormat(time) {
       return console.log("Veuillez rentrer une heure valide");
     }
   
-    if (amPm && amPm.toLowerCase() === 'pm' && hours !== 12) {
-      hours += 12;
-    } else if (amPm && amPm.toLowerCase() === 'am' && hours === 12) {
-      hours = 0;
-    }
-  
-    const formattedHours = (hours < 10 ? '0' : '') + hours;
-    const formattedMinutes = (minutes < 10 ? '0' : '') + minutes;
-  
-    return formattedHours + 'h' + formattedMinutes;
+   if (hours < 12 && time.toLowerCase().includes("pm")) {
+    formattedTime = (hours + 12) + ":" + minutes;
+  } else if (hours === 12 && time.toLowerCase().includes("am")) {
+    formattedTime = "00:" + minutes;
+  } else {
+    formattedTime = (hours < 10 ? "0" + hours : hours) + ":" + minutes;
+  }
+
+  return formattedTime + "h";
   }
   
   console.log(convertTo24HourFormat(process.argv[2]));
