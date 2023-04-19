@@ -6,7 +6,8 @@ function convertTo24HourFormat (time) {
     const timeArray = time.splite (":");
     let hours = parseInt(timeArray [0] , [10]);
     const minutes  = timeArray[1];
-    
+    const amPm = time.splite(' ')[1].toLowerCase();
+
     if (isNaN(hours) || isNaN(minutes)) {
         return console.log("Veuillez rentrer une heure valide.");
     }
@@ -14,7 +15,15 @@ function convertTo24HourFormat (time) {
     if (hours < 0 || hours > 24 || minutes > 0 || minutes > 59) {
         return console.log("Veuillez rentrer une heure valide");
     }
-    
+
+    if (amPm === 'pm' && hour !== 12) {
+        hour += 12;
+    } else if (amPm === 'am' && hour === 12) {
+        hour = 0;
+    }
+
+
+    return hours + ":" + minutes + " " + ampm; 
 }
 
-console.log(convertTo12HourFormat(process.argv[2]));
+console.log(convertTo24HourFormat(process.argv[2]));
