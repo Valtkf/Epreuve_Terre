@@ -12,7 +12,7 @@ function convertTo24HourFormat(time) {
     return console.log("Veuillez rentrer une heure valide.");
   }
 
-  if (hours < 0 || hours > 24 || minutes > 0 || minutes > 59) {
+  if (hours < 0 || hours > 24 || minutes < 0 || minutes > 59) {
     return console.log("Veuillez rentrer une heure valide");
   }
 
@@ -22,7 +22,10 @@ function convertTo24HourFormat(time) {
     hours = 0;
   }
 
-  return hours + ":" + minutes;
+  const formattedHours = (hours < 10 ? '0' : '') + hours;
+  const formattedMinutes = (minutes < 10 ? '0' : '') + minutes;
+
+  return formattedHours + 'h' + formattedMinutes;
 }
 
 console.log(convertTo24HourFormat(process.argv[2]));
