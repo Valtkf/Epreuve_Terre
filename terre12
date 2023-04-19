@@ -3,14 +3,18 @@ Attention : midi et minuit
 il faudra gérer les différentes erreurs d'arguments
 
 function convertTo24HourFormat (time) {
-    const TimeArray = time.splite (":");
+    const timeArray = time.splite (":");
     let hours = parseInt(timeArray [0] , [10]);
     const minutes  = timeArray[1];
     
     if (isNaN(hours) || isNaN(minutes)) {
-    return console.log("Veuillez rentrer une heure valide. ")
-  }
-  
+        return console.log("Veuillez rentrer une heure valide.");
+    }
+
+    if (hours < 0 || hours > 24 || minutes > 0 || minutes > 59) {
+        return console.log("Veuillez rentrer une heure valide");
+    }
+    
 }
 
 console.log(convertTo12HourFormat(process.argv[2]));
