@@ -28,4 +28,4 @@ function convertTo24HourFormat(time) {
   return formattedHours + 'h' + formattedMinutes;
 }
 
-console.log(convertTo24HourFormat(process.argv[2]));
+console.log(convertTo24HourFormat("5:00 pm"));
