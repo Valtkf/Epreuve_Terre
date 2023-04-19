@@ -5,20 +5,20 @@ il faudra gérer les différentes erreurs d'arguments
 function convertTo24HourFormat(time) {
   const timeArray = time.split(":");
   let hours = parseInt(timeArray[0], 10);
-  const minutes = timeArray[1].slice(0, 2);
-  const amPm = timeArray[1].slice(2).toLowerCase();
+  const minutes = timeArray[1].replace(/[a-z]/gi, '');
+  const amPm = time.split(' ')[1];
 
   if (isNaN(hours) || isNaN(minutes)) {
     return console.log("Veuillez rentrer une heure valide.");
   }
 
   if (hours < 0 || hours > 12 || minutes < 0 || minutes > 59) {
-    return console.log("Veuillez rentrer une heure valide.");
+    return console.log("Veuillez rentrer une heure valide");
   }
 
-  if (amPm === 'pm' && hours !== 12) {
+  if (amPm && amPm.toLowerCase() === 'pm' && hours !== 12) {
     hours += 12;
-  } else if (amPm === 'am' && hours === 12) {
+  } else if (amPm && amPm.toLowerCase() === 'am' && hours === 12) {
     hours = 0;
   }
 
