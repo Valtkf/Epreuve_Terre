@@ -4,13 +4,8 @@ il faudra gérer les différentes erreurs d'arguments
 
 function convertTo24HourFormat(time) {
   const timeArray = time.split(":");
-  
-  if (timeArray.length !== 2) {
-    return console.log("Veuillez rentrer une heure valide.");
-  }
-  
   let hours = parseInt(timeArray[0], 10);
-  const minutes = timeArray[1];
+  const minutes = parseInt(timeArray[1], 10);
   const amPm = time.split(' ')[1];
 
   if (isNaN(hours) || isNaN(minutes)) {
@@ -28,7 +23,7 @@ function convertTo24HourFormat(time) {
   }
 
   const formattedHours = (hours < 10 ? '0' : '') + hours;
-  const formattedMinutes = (minutes < 10 ? '0' : '') + minutes;
+  const formattedMinutes = (minutes === 0 ? '' : (minutes < 10 ? ':0' : ':') + minutes);
 
   return formattedHours + 'h' + formattedMinutes;
 }
