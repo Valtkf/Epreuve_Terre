@@ -2,31 +2,53 @@ Créez un programme qui transforme une heure affichée en format 12h en une heur
 Attention : midi et minuit
 il faudra gérer les différentes erreurs d'arguments
 
-function convertirHeure(heure12h) {
-  // Extraire l'heure, les minutes et AM/PM de l'heure au format 12 heures
-  let heure = parseInt(heure12h.split(":")[0]);
-  let minutes = parseInt(heure12h.split(":")[1]);
-  let estAM = heure12h.indexOf("AM") > -1;
-  let estPM = heure12h.indexOf("PM") > -1;
-  
-  // Vérifier si l'heure est minuit ou midi
-  if (heure === 12 && estAM) {
-    heure = 0;
-  } else if (heure !== 12 && estPM) {
-    heure += 12;
+function convertir12hEn24h(heure12h) {
+  let heure24h = '';
+  let heures = '';
+  let minutes = '';
+  let suffixe = '';
+
+  // Extraire les heures, minutes et suffixe de l'heure 12h
+  for (let i = 0; i < heure12h.length; i++) {
+    if (heure12h[i] === ':' || heure12h[i] === ' ') continue;
+
+    if (heure12h[i].toUpperCase() === 'A' || heure12h[i].toUpperCase() === 'P') {
+      suffixe = heure12h[i] + heure12h[i+1];
+      break;
+    } else {
+      if (heures.length < 2) {
+        heures += heure12h[i];
+      } else {
+        minutes += heure12h[i];
+      }
+    }
   }
-  
-  // Formater l'heure au format 24 heures
-  let heure24h = (heure < 10 ? "0" : "") + heure + ":" + (minutes < 10 ? "0" : "") + minutes;
+
+  // Convertir les heures au format 24h
+  if (suffixe.toUpperCase() === 'PM') {
+    if (parseInt(heures) !== 12) {
+      heures = (parseInt(heures) + 12).toString();
+    }
+  } else if (suffixe.toUpperCase() === 'AM') {
+    if (heures === '12') {
+      heures = '00';
+    }
+  }
+
+  // Formater l'heure au format 24h
+  heure24h = heures.padStart(2, '0') + ':' + minutes.padStart(2, '0');
   
   return heure24h;
 }
 
-// Récupérer l'heure à convertir à partir du terminal
+// Récupérer l'heure au format 12h depuis la ligne de commande
 const heure12h = process.argv[2];
 
-// Convertir l'heure
-const heure24h = convertirHeure(heure12h);
-
-// Afficher le résultat
-console.log(`L'heure ${heure12h} en format 24 heures est : ${heure24h}`);
+// Vérifier que l'heure est fournie
+if (!heure12h) {
+  console.log('Veuillez fournir une heure au format "hh:mm AM/PM"');
+} else {
+  // Convertir l'heure au format 24h et afficher le résultat
+  const heure24h = convertir12hEn24h(heure12h);
+  console.log(heure24h);
+}
