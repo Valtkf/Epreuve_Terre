@@ -3,40 +3,24 @@ Attention : midi et minuit
 il faudra gérer les différentes erreurs d'arguments
 
 function convertir12hEn24h(heure12h) {
-  let heure24h = '';
-  let heures = '';
-  let minutes = '';
-  let suffixe = '';
-
   // Extraire les heures, minutes et suffixe de l'heure 12h
-  for (let i = 0; i < heure12h.length; i++) {
-    if (heure12h[i] === ':' || heure12h[i] === ' ') continue;
-
-    if (heure12h[i].toUpperCase() === 'A' || heure12h[i].toUpperCase() === 'P') {
-      suffixe = heure12h[i] + heure12h[i+1];
-      break;
-    } else {
-      if (heures.length < 2) {
-        heures += heure12h[i];
-      } else {
-        minutes += heure12h[i];
-      }
-    }
-  }
+  let heures = parseInt(heure12h.substring(0, 2));
+  let minutes = parseInt(heure12h.substring(3, 5));
+  let suffixe = heure12h.substring(6);
 
   // Convertir les heures au format 24h
   if (suffixe.toUpperCase() === 'PM') {
-    if (parseInt(heures) !== 12) {
-      heures = (parseInt(heures) + 12).toString();
+    if (heures !== 12) {
+      heures += 12;
     }
   } else if (suffixe.toUpperCase() === 'AM') {
-    if (heures === '12') {
-      heures = '00';
+    if (heures === 12) {
+      heures = 0;
     }
   }
 
   // Formater l'heure au format 24h
-  heure24h = heures.padStart(2, '0') + ':' + minutes.padStart(2, '0');
+  let heure24h = heures.toString().padStart(2, '0') + ':' + minutes.toString().padStart(2, '0');
   
   return heure24h;
 }
