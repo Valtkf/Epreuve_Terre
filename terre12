@@ -2,30 +2,30 @@ Créez un programme qui transforme une heure affichée en format 12h en une heur
 Attention : midi et minuit
 il faudra gérer les différentes erreurs d'arguments
 
-function convertTo24HourFormat(time) {
-  const timeArray = time.split(":");
-  let hours = parseInt(timeArray[0], 10);
-  const minutes = parseInt(timeArray[1], 10);
-  const amPm = time.split(' ')[1];
-
-  if (isNaN(hours) || isNaN(minutes)) {
-    return console.log("Veuillez rentrer une heure valide.");
+function convertirHeure(heure12h) {
+  // Extraire l'heure, les minutes et AM/PM de l'heure au format 12 heures
+  let heure = parseInt(heure12h.split(":")[0]);
+  let minutes = parseInt(heure12h.split(":")[1]);
+  let estAM = heure12h.indexOf("AM") > -1;
+  
+  // Vérifier si l'heure est minuit ou midi
+  if (heure === 12 && estAM) {
+    heure = 0;
+  } else if (heure !== 12 && !estAM) {
+    heure += 12;
   }
-
-  if (hours < 0 || hours > 12 || minutes < 0 || minutes > 59) {
-    return console.log("Veuillez rentrer une heure valide.");
-  }
-
-  if (amPm && amPm.toLowerCase() === 'pm' && hours !== 12) {
-    hours += 12;
-  } else if (amPm && amPm.toLowerCase() === 'am' && hours === 12) {
-    hours = 0;
-  }
-
-  const formattedHours = (hours < 10 ? '0' : '') + hours;
-  const formattedMinutes = (minutes === 0 ? '' : (minutes < 10 ? ':0' : ':') + minutes);
-
-  return formattedHours + 'h' + formattedMinutes;
+  
+  // Formater l'heure au format 24 heures
+  let heure24h = (heure < 10 ? "0" : "") + heure + ":" + (minutes < 10 ? "0" : "") + minutes;
+  
+  return heure24h;
 }
 
-console.log(convertTo24HourFormat(process.argv[2]));
+// Récupérer l'heure à convertir à partir du terminal
+const heure12h = process.argv[2];
+
+// Convertir l'heure
+const heure24h = convertirHeure(heure12h);
+
+// Afficher le résultat
+console.log(`L'heure ${heure12h} en format 24 heures est : ${heure24h}`);
