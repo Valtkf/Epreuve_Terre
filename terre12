@@ -9,6 +9,9 @@ function convertir12hEn24h(heure12h) {
   let suffixe = heure12h.substring(6);
 
   // Convertir les heures au format 24h
+  if (isNaN(heures) || isNaN(minutes)) {
+    return console.log("Veuillez rentrer une heure valide. ")
+  }
   if (suffixe.toUpperCase() === 'PM') {
     if (heures !== 12) {
       heures += 12;
@@ -36,3 +39,4 @@ if (!heure12h) {
   const heure24h = convertir12hEn24h(heure12h);
   console.log(heure24h);
 }
+
