@@ -7,11 +7,12 @@ function convertirHeure(heure12h) {
   let heure = parseInt(heure12h.split(":")[0]);
   let minutes = parseInt(heure12h.split(":")[1]);
   let estAM = heure12h.indexOf("AM") > -1;
+  let estPM = heure12h.indexOf("PM") > -1;
   
   // Vérifier si l'heure est minuit ou midi
   if (heure === 12 && estAM) {
     heure = 0;
-  } else if (heure !== 12 && !estAM) {
+  } else if (heure !== 12 && estPM) {
     heure += 12;
   }
   
