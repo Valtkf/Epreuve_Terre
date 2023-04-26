@@ -13,7 +13,7 @@ function convertir12hEn24h(heure12h) {
     return console.log("Veuillez rentrer une heure valide. ")
   }
   if (suffixe.toUpperCase() === 'PM') {
-    if (heures !== 12) {
+    if (heures < 12) {
       heures += 12;
     }
   } else if (suffixe.toUpperCase() === 'AM') {
@@ -28,15 +28,10 @@ function convertir12hEn24h(heure12h) {
   return heure24h;
 }
 
-// Récupérer l'heure au format 12h depuis la ligne de commande
-const heure12h = process.argv[2];
+// Exemples d'heures au format 12h
+let heure1 = '12:00 AM';
+let heure2 = '04:30 PM';
+let heure3 = '08:15 AM';
 
-// Vérifier que l'heure est fournie
-if (!heure12h) {
-  console.log('Veuillez fournir une heure au format "hh:mm AM/PM"');
-} else {
-  // Convertir l'heure au format 24h et afficher le résultat
-  const heure24h = convertir12hEn24h(heure12h);
-  console.log(heure24h);
-}
-
+// Convertir les heures au format 24h et afficher le résultat
+console.log(convertir12hEn24h(heure1)); // Affiche "00:00"
