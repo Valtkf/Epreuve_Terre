@@ -1,1 +1,6 @@
 trouver la suisse
+Créez un programme qui prend en paramètre trois entiers et affiche la valeur du milieu.
+Exemple : node terre13.js 11 40 34
+sortie : 34
+node terre13.js 2 2 2
+sortie : erreur
