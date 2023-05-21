@@ -11,7 +11,7 @@ const chiffre3 = parseFloat(process.argv[4].replace(',', '.'));
 if (chiffre1 === chiffre2 || chiffre1 === chiffre3 || chiffre2 === chiffre3) {
   console.log("Erreur : Des chiffres identiques ont été entrés. Veuillez entrer trois chiffres distincts.");
 } else if (isNaN(chiffre1) || isNaN(chiffre2) || isNaN(chiffre3)) {
-  console.log("Erreur : Les chiffres entrés ne sont pas valides. Veuillez entrer des chiffres numériques.");
+  console.log("Erreur : Les chiffres entrés ne sont pas valides. Veuillez entrer des chiffres.");
 } else if (!Number.isInteger(chiffre1) || !Number.isInteger(chiffre2) || !Number.isInteger(chiffre3)) {
   console.log("Erreur : Les chiffres entrés ne sont pas valides. Veuillez entrer des entiers.");
 } else {
