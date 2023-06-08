@@ -1,6 +1,6 @@
-Créez un programme qui transforme une heure affichée en format 12h en une heure affichée au format 24h.
-Attention : midi et minuit
-il faudra gérer les différentes erreurs d'arguments
+//Créez un programme qui transforme une heure affichée en format 12h en une heure affichée au format 24h.
+//Attention : midi et minuit
+//il faudra gérer les différentes erreurs d'arguments
 
 function convertir12hEn24h(heure12h) {
   // Extraire les heures, minutes et suffixe de l'heure 12h
